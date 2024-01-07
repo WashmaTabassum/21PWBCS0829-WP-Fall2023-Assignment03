@@ -11,12 +11,6 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  category: String,
-  brand: String,
-  stock: {
-    type: Number,
-    default: 0
-  },
   imageUrl: String,
   createdAt: {
     type: Date,
