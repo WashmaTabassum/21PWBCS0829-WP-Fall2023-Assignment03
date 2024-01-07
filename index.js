@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
+const { body, validationResult } = require('express-validator');
 const User = require('./models/userSchema.js');
+const Admin = require('./models/adminSchema.js'); // Import Admin schema
 const authRoutes = require('./routes/authRoutes.js');
+const adminRoutes = require('./routes/adminRoutes.js'); // Import Admin authentication routes
 
 const app = express();
 app.use(express.json());
@@ -21,6 +23,7 @@ db.once('open', () => {
   console.log('Database connected successfully');
   // Mounting the authentication routes only after successful DB connection
   app.use('/', authRoutes);
+  app.use('/', adminRoutes); // Mounting admin authentication routes
 
   // Home page route
   app.get('/', (req, res) => {
@@ -32,4 +35,3 @@ db.once('open', () => {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 });
-

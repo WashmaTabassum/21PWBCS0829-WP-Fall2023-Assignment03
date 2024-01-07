@@ -5,7 +5,6 @@ const User = require('../models/userSchema.js');
 
 const router = express.Router();
 
-// ... rest of your code ...
 
 
 // Sign Up endpoint
