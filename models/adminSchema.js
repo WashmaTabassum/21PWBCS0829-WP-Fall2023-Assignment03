@@ -14,7 +14,11 @@ const adminSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
+  role: {
+    type: String,
+    default: 'admin', // Set the default role to 'admin'
+},
 });
 
 // Define Admin model

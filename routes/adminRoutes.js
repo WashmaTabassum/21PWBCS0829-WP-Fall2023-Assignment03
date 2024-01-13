@@ -109,7 +109,7 @@ router.post('/admin/signin', async (req, res) => {
     }
 
     // res.status(200).json({ message: 'Admin Sign-in successful' });
-    const token = jwt.sign({ admin }, 'your_secret_key'); // Replace 'your_secret_key' with your actual secret key
+    const token = jwt.sign({ admin }, '#sgh$k6478*dhkdj_4673@yiui'); // Replace 'your_secret_key' with your actual secret key
 
         res.status(200).json({ message: 'Admin Sign-in successful', token }); // Sending the generated token in response
     
