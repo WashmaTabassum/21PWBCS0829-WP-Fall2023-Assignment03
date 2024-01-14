@@ -41,6 +41,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes.js');
 const adminRoutes = require('./routes/adminRoutes.js');
+const productRoutes = require('./routes/productRoutes.js');
 const app = express();
 app.use(express.json());
 
@@ -58,7 +59,7 @@ db.once('open', () => {
 
   app.use('/', authRoutes); // Mounting user authentication routes
   app.use('/', adminRoutes); // Mounting admin authentication routes
-
+  app.use('/', productRoutes);
   // Home page route
   app.get('/', (req, res) => {
     res.send('Welcome to the eCommerce web app!');

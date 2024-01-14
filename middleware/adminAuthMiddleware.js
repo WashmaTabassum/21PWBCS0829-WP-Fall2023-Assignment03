@@ -5,7 +5,7 @@ const authenticateAdmin = (req, res, next) => {
   const token = req.header('Authorization');
 
   if (!token || !token.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'Authorization denied. Invalid token format.' });
+    return res.status(401).json({ message: 'Authorization denied. Invalid token.' });
   }
 
   try {
@@ -21,7 +21,7 @@ const authenticateAdmin = (req, res, next) => {
 
     next();
   } catch (error) {
-    res.status(401).json({ message: 'Invalid token.' });
+    res.status(401).json({ message: 'You are not Authorized!' });
   }
 };
 

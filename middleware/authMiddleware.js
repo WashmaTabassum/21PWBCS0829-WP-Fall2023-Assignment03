@@ -56,16 +56,16 @@ const authenticateUser = (req, res, next) => {
   const token = req.header('Authorization');
 
   if (!token || !token.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'Authorization denied. Invalid token format.' });
+    return res.status(401).json({ message: 'Authorization denied. Invalid token.' });
   }
 
   try {
     const secretKey = '#7kfE*4tGz$LQW9!sP@u2MxY6vJhNpC';
     const tokenWithoutBearer = token.slice(7); // Remove 'Bearer ' from the token
-    // console.log('Token without Bearer:', tokenWithoutBearer);
+    console.log('Token without Bearer:', tokenWithoutBearer);
 
     const decoded = jwt.verify(tokenWithoutBearer, secretKey);
-    // console.log('Decoded Token:', decoded);
+    console.log('Decoded Token:', decoded);
 
     req.user = decoded.user;
 
@@ -76,7 +76,7 @@ const authenticateUser = (req, res, next) => {
     next();
   } catch (error) {
     console.error('Error in authentication middleware:', error);
-    res.status(401).json({ message: 'Invalid token.' });
+    res.status(401).json({ message: 'Signin First' });
   }
 };
 

@@ -1,10 +1,10 @@
 const express = require('express');
 const Product = require('../models/productSchema');
-
+const adminAuthMiddleware = require('../middleware/adminAuthMiddleware');
 const router = express.Router();
 
 // Get all products
-router.get('/products', async (req, res) => {
+router.get('/allproducts',adminAuthMiddleware.authenticateAdmin, async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
@@ -13,11 +13,20 @@ router.get('/products', async (req, res) => {
   }
 });
 
-// Add a new product
-router.post('/products', async (req, res) => {
-  const { name, description, price, imageUrl } = req.body;
+router.post('/addproducts', adminAuthMiddleware.authenticateAdmin, async (req, res) => {
+  const { productId, name, description, price, imageUrl } = req.body;
+  
   try {
-    const newProduct = new Product({ name, description, price, imageUrl });
+    // Check if a product with the same productId already exists
+    const existingProduct = await Product.findOne({ productId });
+
+    if (existingProduct) {
+      return res.status(400).json({ message: 'Product with the same productId already exists.' });
+    }
+
+    // Create a new product if it doesn't exist
+    const newProduct = new Product({ productId, name, description, price, imageUrl });
+    
     await newProduct.save();
     res.status(201).json(newProduct);
   } catch (error) {
@@ -25,14 +34,15 @@ router.post('/products', async (req, res) => {
   }
 });
 
+
 // Update a product by ID
-router.put('/products/:id', async (req, res) => {
+router.put('/products/:id', adminAuthMiddleware.authenticateAdmin, async (req, res) => {
   const { id } = req.params;
-  const { name, description, price, imageUrl } = req.body;
+  const { productId, name, description, price, imageUrl } = req.body;
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
       id,
-      { name, description, price, imageUrl },
+      { productId, name, description, price, imageUrl },
       { new: true }
     );
     res.json(updatedProduct);
@@ -42,7 +52,7 @@ router.put('/products/:id', async (req, res) => {
 });
 
 // Delete a product by ID
-router.delete('/products/:id', async (req, res) => {
+router.delete('/products/:id', adminAuthMiddleware.authenticateAdmin, async (req, res) => {
   const { id } = req.params;
   try {
     const deletedProduct = await Product.findByIdAndDelete(id);
