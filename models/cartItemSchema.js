@@ -1,7 +1,5 @@
-// cartItemSchema.js
 const mongoose = require('mongoose');
 
-// Define Cart Schema
 const cartItemSchema = new mongoose.Schema({
   product: {
     type: mongoose.Schema.Types.ObjectId,

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Define Admin Schema
 const adminSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -17,11 +16,8 @@ const adminSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: 'admin', // Set the default role to 'admin'
+    default: 'admin', 
 },
 });
-
-// Define Admin model
 const Admin = mongoose.model('Admin', adminSchema);
-
 module.exports = Admin;

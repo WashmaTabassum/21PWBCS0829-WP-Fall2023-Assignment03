@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-// Define Order Schema
 const orderSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -38,8 +36,5 @@ const orderSchema = new mongoose.Schema({
     default: Date.now
   }
 });
-
-// Define Order model
 const Order = mongoose.model('Order', orderSchema);
-
 module.exports = Order;

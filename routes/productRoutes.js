@@ -17,14 +17,11 @@ router.post('/addproducts', adminAuthMiddleware.authenticateAdmin, async (req, r
   const { productId, name, description, price, imageUrl } = req.body;
   
   try {
-    // Check if a product with the same productId already exists
     const existingProduct = await Product.findOne({ productId });
 
     if (existingProduct) {
       return res.status(400).json({ message: 'Product with the same productId already exists.' });
     }
-
-    // Create a new product if it doesn't exist
     const newProduct = new Product({ productId, name, description, price, imageUrl });
     
     await newProduct.save();
@@ -33,9 +30,7 @@ router.post('/addproducts', adminAuthMiddleware.authenticateAdmin, async (req, r
     res.status(500).json({ error: error.message });
   }
 });
-
-
-// Update a product by ID
+// Update a product end-point
 router.put('/products/:id', adminAuthMiddleware.authenticateAdmin, async (req, res) => {
   const { id } = req.params;
   const { productId, name, description, price, imageUrl } = req.body;
@@ -51,7 +46,7 @@ router.put('/products/:id', adminAuthMiddleware.authenticateAdmin, async (req, r
   }
 });
 
-// Delete a product by ID
+// Delete a product end-point
 router.delete('/products/:id', adminAuthMiddleware.authenticateAdmin, async (req, res) => {
   const { id } = req.params;
   try {
@@ -61,6 +56,5 @@ router.delete('/products/:id', adminAuthMiddleware.authenticateAdmin, async (req
     res.status(500).json({ error: error.message });
   }
 });
-
 module.exports = router;
 
