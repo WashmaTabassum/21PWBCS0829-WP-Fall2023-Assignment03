@@ -103,7 +103,7 @@ router.post('/signup', [
       lastname,
       email,
       mobile,
-      password, // Ensure you're properly hashing the password
+      password: hashedPassword, // Ensure you're properly hashing the password
       address,
       cart: [],
     });
@@ -153,9 +153,11 @@ router.get('/product', async (req, res) => {
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Types;
 
+router.use(authMiddleware.authenticateUser);
+
 // Add Items to Cart
-router.post('/cart/add', authMiddleware.authenticateUser, async (req, res) => {
-  console.log('Token in Request Header:', req.header('Authorization'));
+router.post('/cart/add', async (req, res) => {
+  // console.log('Token in Request Header:', req.header('Authorization'));
 
   try {
     const { productId, quantity } = req.body;
@@ -174,10 +176,11 @@ router.post('/cart/add', authMiddleware.authenticateUser, async (req, res) => {
 
     const price = quantity * product.price;
 
-    // Ensure req.user is an instance of the User model
-    if (!(req.user instanceof User)) {
-      return res.status(500).json({ message: 'User not properly authenticated' });
-    }
+   // Ensure req.user is an object with _id property
+if (!req.user || !req.user._id) {
+  return res.status(500).json({ message: 'User not properly authenticated' });
+}
+
 
     req.user.cart.push({ product: productId, quantity, price });
     await req.user.save();
@@ -191,11 +194,40 @@ router.post('/cart/add', authMiddleware.authenticateUser, async (req, res) => {
 
 
 // Manage Cart Contents (Update Quantities and Remove Items)
+// router.patch('/cart/update', authMiddleware.authenticateUser, async (req, res) => {
+//   try {
+//     const { productId, quantity, action } = req.body;
+
+//     const cartItem = req.user.cart.find(item => item.product === productId);
+
+//     if (!cartItem) {
+//       return res.status(404).json({ message: 'Item not found in the cart' });
+//     }
+
+//     if (action === 'update') {
+//       cartItem.quantity = quantity;
+//       cartItem.price = quantity * cartItem.product.price;
+//     } else if (action === 'remove') {
+//       req.user.cart = req.user.cart.filter(item => item.product !== productId);
+//     }
+
+//     await req.user.save();
+
+//     res.json({ message: 'Cart updated successfully' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Error updating cart');
+//   }
+// });
+
 router.patch('/cart/update', authMiddleware.authenticateUser, async (req, res) => {
   try {
     const { productId, quantity, action } = req.body;
 
-    const cartItem = req.user.cart.find(item => item.product === productId);
+    // Convert productId to string to ensure consistent type comparison
+    const stringProductId = String(productId);
+
+    const cartItem = req.user.cart.find(item => String(item.product) === stringProductId);
 
     if (!cartItem) {
       return res.status(404).json({ message: 'Item not found in the cart' });
@@ -203,19 +235,37 @@ router.patch('/cart/update', authMiddleware.authenticateUser, async (req, res) =
 
     if (action === 'update') {
       cartItem.quantity = quantity;
-      cartItem.price = quantity * cartItem.product.price;
+
+      // Ensure product.price is a valid number before calculating the price
+      if (typeof cartItem.product.price === 'number') {
+        cartItem.price = quantity * cartItem.product.price;
+      } else {
+        return res.status(500).json({ message: 'Invalid product price' });
+      }
     } else if (action === 'remove') {
-      req.user.cart = req.user.cart.filter(item => item.product !== productId);
+      req.user.cart = req.user.cart.filter(item => String(item.product) !== stringProductId);
     }
+
+    // Log the user object before saving
+    console.log('User Object Before Save:', req.user);
 
     await req.user.save();
 
     res.json({ message: 'Cart updated successfully' });
   } catch (error) {
     console.error(error);
+
+    // Log the validation errors if present
+    if (error.errors) {
+      console.error('Validation Errors:', error.errors);
+    }
+
     res.status(500).send('Error updating cart');
   }
 });
+
+
+
 
 // Proceed to Checkout
 router.post('/checkout', authMiddleware.authenticateUser, async (req, res) => {
