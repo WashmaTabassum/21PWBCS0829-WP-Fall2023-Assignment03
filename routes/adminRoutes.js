@@ -27,6 +27,7 @@ router.post('/admin/signup', [
     const hashedPassword = await bcrypt.hash(password, 10);
     const newAdmin = new Admin({ username, password: hashedPassword });
     await newAdmin.save();
+    console.log(newAdmin)
     res.status(201).json({ message: 'Admin registered successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Error registering admin' });
@@ -56,6 +57,32 @@ router.post('/admin/signin', async (req, res) => {
     res.status(500).json({ message: 'Error signing in' });
   }
 });
+
+// Admin Sign-in endpoint
+// router.post('/admin/signin', async (req, res) => {
+//   const { username, password } = req.body;
+
+//   try {
+//     const admin = await Admin.findOne({ username });
+//     if (!admin) {
+//       return res.status(404).json({ message: 'Admin not found' });
+//     }
+
+//     const validPassword = await bcrypt.compare(password, admin.password);
+//     if (!validPassword) {
+//       return res.status(401).json({ message: 'Invalid password' });
+//     }
+
+//     const secretKey = '#sgh$k6hkdj_4673@yiui';
+//     const token = jwt.sign({ admin }, secretKey);  // Pass admin directly to jwt.sign
+
+//     res.status(200).json({ message: 'Admin Sign-in successful', token });
+//   } catch (error) {
+//     res.status(500).json({ message: 'Error signing in' });
+//   }
+// });
+
+
 router.get('/admin/dashboard', adminAuthMiddleware.authenticateAdmin, async (req, res) => {
   res.send('Admin dashboard');
 });

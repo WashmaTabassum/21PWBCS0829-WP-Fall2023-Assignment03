@@ -4,7 +4,7 @@ const User = require('../models/userSchema');
 const authenticateUser = async (req, res, next) => {
   const token = req.header('Authorization');
   if (!token || !token.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'Authorization denied. Invalid token.' });
+    return res.status(401).json({ message: 'User Authorization denied. Invalid token.' });
   }
   try {
     const secretKey = '#7kfE*4tGz$LQW9!sP@u2MxY6vJhNpC';

@@ -73,8 +73,8 @@ router.get('/product', async (req, res) => {
 });
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Types;
-router.use(authMiddleware.authenticateUser);
-router.post('/cart/add', async (req, res) => {
+// router.use(authMiddleware.authenticateUser);
+router.post('/cart/add',authMiddleware.authenticateUser, async (req, res) => {
   try {
     const { productId, quantity } = req.body;
     const validObjectId = ObjectId.isValid(productId);
@@ -128,20 +128,57 @@ router.patch('/cart/update', authMiddleware.authenticateUser, async (req, res) =
     res.status(500).send('Error updating cart');
   }
 });
-router.use(authMiddleware.authenticateUser);
-router.post('/checkout',  async (req, res) => {
+// router.use(authMiddleware.authenticateUser);
+// router.post('/checkout', authMiddleware.authenticateUser, async (req, res) => {
+//   try {
+//     const { shippingDetails, paymentMethod } = req.body;
+
+//     if (!['CashOnDelivery', 'CreditCard'].includes(paymentMethod)) {
+//       return res.status(400).json({ message: 'Invalid payment method' });
+//     }
+//     // Log the cart array before calculating total price
+//     console.log('Cart before calculating total price:', req.user.cart);
+
+//     const totalPrice = req.user.cart.reduce((total, item) => total + item.price, 0);
+//     // Log the calculated total price
+//     console.log('Calculated Total Price:', totalPrice);
+//     const order = new Order({
+//       user: req.user._id,
+//       products: req.user.cart,
+//       totalPrice: totalPrice,
+//       shippingDetails,
+//       paymentMethod
+//     });
+//     await order.save();
+//     req.user.cart = [];
+//     await req.user.save();
+//     const paymentReceipt = `Payment Receipt for Order ${order._id}\nTotal Amount: ${totalPrice}\nPayment Method: ${paymentMethod}\n`;
+
+//     res.json({ message: 'Order placed successfully', paymentReceipt });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Error processing checkout');
+//   }
+// });
+
+// ...
+
+router.post('/checkout', authMiddleware.authenticateUser, async (req, res) => {
   try {
     const { shippingDetails, paymentMethod } = req.body;
 
     if (!['CashOnDelivery', 'CreditCard'].includes(paymentMethod)) {
       return res.status(400).json({ message: 'Invalid payment method' });
     }
+
     // Log the cart array before calculating total price
     console.log('Cart before calculating total price:', req.user.cart);
 
     const totalPrice = req.user.cart.reduce((total, item) => total + item.price, 0);
+    
     // Log the calculated total price
     console.log('Calculated Total Price:', totalPrice);
+
     const order = new Order({
       user: req.user._id,
       products: req.user.cart,
@@ -149,9 +186,14 @@ router.post('/checkout',  async (req, res) => {
       shippingDetails,
       paymentMethod
     });
+
+    // Save the order first
     await order.save();
+
+    // Clear user's cart only if the order is saved successfully
     req.user.cart = [];
     await req.user.save();
+
     const paymentReceipt = `Payment Receipt for Order ${order._id}\nTotal Amount: ${totalPrice}\nPayment Method: ${paymentMethod}\n`;
 
     res.json({ message: 'Order placed successfully', paymentReceipt });
@@ -160,6 +202,9 @@ router.post('/checkout',  async (req, res) => {
     res.status(500).send('Error processing checkout');
   }
 });
+
+// ...
+
 
 // View Order History
 router.get('/orders', authMiddleware.authenticateUser, async (req, res) => {
