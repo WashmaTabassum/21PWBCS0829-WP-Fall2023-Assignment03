@@ -45,7 +45,7 @@ const productRoutes = require('./routes/productRoutes.js');
 const app = express();
 app.use(express.json());
 
-const uri = 'mongodb://127.0.0.1:27017/My_Ecommerce'; // Replace with your MongoDB URI
+ const uri = 'mongodb://127.0.0.1:27017/My_Ecommerce'; // Replace with your MongoDB URI
 mongoose.connect(uri);
 
 const db = mongoose.connection;

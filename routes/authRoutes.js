@@ -63,6 +63,20 @@ router.post('/signin', async (req, res) => {
   }
 });
 
+router.get('/user/dashboard', authMiddleware.authenticateUser, async (req, res) => {
+  const dashboardMessage = `
+    Welcome to the User Dashboard!
+    For all products go to /product
+    To add products to cart go to /cart/add
+    To update products in cart go to /cart/update {for removal req.body action="remove", for updation req.body action="update}
+    For checkout go to /checkout
+    For Order History go to /orders
+    For update profile go to /account/update
+  `;
+
+  res.send(dashboardMessage);
+});
+
 router.get('/product', async (req, res) => {
   try {
     const products = await Product.find().sort({ name: 1 });
@@ -73,7 +87,7 @@ router.get('/product', async (req, res) => {
 });
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Types;
-// router.use(authMiddleware.authenticateUser);
+
 router.post('/cart/add',authMiddleware.authenticateUser, async (req, res) => {
   try {
     const { productId, quantity } = req.body;
@@ -128,41 +142,8 @@ router.patch('/cart/update', authMiddleware.authenticateUser, async (req, res) =
     res.status(500).send('Error updating cart');
   }
 });
-// router.use(authMiddleware.authenticateUser);
-// router.post('/checkout', authMiddleware.authenticateUser, async (req, res) => {
-//   try {
-//     const { shippingDetails, paymentMethod } = req.body;
 
-//     if (!['CashOnDelivery', 'CreditCard'].includes(paymentMethod)) {
-//       return res.status(400).json({ message: 'Invalid payment method' });
-//     }
-//     // Log the cart array before calculating total price
-//     console.log('Cart before calculating total price:', req.user.cart);
-
-//     const totalPrice = req.user.cart.reduce((total, item) => total + item.price, 0);
-//     // Log the calculated total price
-//     console.log('Calculated Total Price:', totalPrice);
-//     const order = new Order({
-//       user: req.user._id,
-//       products: req.user.cart,
-//       totalPrice: totalPrice,
-//       shippingDetails,
-//       paymentMethod
-//     });
-//     await order.save();
-//     req.user.cart = [];
-//     await req.user.save();
-//     const paymentReceipt = `Payment Receipt for Order ${order._id}\nTotal Amount: ${totalPrice}\nPayment Method: ${paymentMethod}\n`;
-
-//     res.json({ message: 'Order placed successfully', paymentReceipt });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Error processing checkout');
-//   }
-// });
-
-// ...
-
+//checkout
 router.post('/checkout', authMiddleware.authenticateUser, async (req, res) => {
   try {
     const { shippingDetails, paymentMethod } = req.body;
@@ -171,14 +152,7 @@ router.post('/checkout', authMiddleware.authenticateUser, async (req, res) => {
       return res.status(400).json({ message: 'Invalid payment method' });
     }
 
-    // Log the cart array before calculating total price
-    console.log('Cart before calculating total price:', req.user.cart);
-
     const totalPrice = req.user.cart.reduce((total, item) => total + item.price, 0);
-    
-    // Log the calculated total price
-    console.log('Calculated Total Price:', totalPrice);
-
     const order = new Order({
       user: req.user._id,
       products: req.user.cart,
@@ -186,11 +160,7 @@ router.post('/checkout', authMiddleware.authenticateUser, async (req, res) => {
       shippingDetails,
       paymentMethod
     });
-
-    // Save the order first
     await order.save();
-
-    // Clear user's cart only if the order is saved successfully
     req.user.cart = [];
     await req.user.save();
 
@@ -202,9 +172,6 @@ router.post('/checkout', authMiddleware.authenticateUser, async (req, res) => {
     res.status(500).send('Error processing checkout');
   }
 });
-
-// ...
-
 
 // View Order History
 router.get('/orders', authMiddleware.authenticateUser, async (req, res) => {
