@@ -1,0 +1,135 @@
+[{
+  "_id": {
+    "$oid": "65a23c1e693ebc9c30f17479"
+  },
+  "firstname": "Washma",
+  "lastname": "Tabassum",
+  "email": "washmamalik@gmail.com",
+  "mobile": "03339332847",
+  "password": "$2b$10$VognUiYOPdGzKVKQAE0Dd..7lu3p/uHqmJYLl3rcbo9WipRjSagk.",
+  "address": {
+    "street": "street 2",
+    "city": "Nowshera",
+    "state": "Pakistan",
+    "country": "Pakistan",
+    "postalCode": "22222"
+  },
+  "orders": [],
+  "role": "user",
+  "__v": 4,
+  "cart": []
+},
+{
+  "_id": {
+    "$oid": "65a3c4049f96c8d5970189da"
+  },
+  "firstname": "Aiman",
+  "lastname": "Malik",
+  "email": "aimanmalik@gmail.com",
+  "mobile": "672906478349",
+  "password": "$2b$10$pNcj6pbUtBBQXkCz5rDdzuYKtzskwcHRf26gAipL9bbpJZA1qapNi",
+  "address": {
+    "street": "287",
+    "city": "Mardan",
+    "state": "Pakistan",
+    "country": "Pakistan",
+    "postalCode": "63879"
+  },
+  "orders": [],
+  "role": "user",
+  "cart": [],
+  "__v": 12
+},
+{
+  "_id": {
+    "$oid": "65a3e34169ea05631b61e7c1"
+  },
+  "firstname": "Alveen",
+  "lastname": "Shah",
+  "email": "alveen@gmail.com",
+  "mobile": "03263873928",
+  "password": "$2b$10$WSpaAt.652/ZqbvKADoT.OGMcCuygU8cDdrQn3ZgPygjlJllg4aRC",
+  "address": {
+    "street": "street 547",
+    "city": "Nowshera",
+    "state": "Pakistan",
+    "country": "Pakistan",
+    "postalCode": "22222"
+  },
+  "orders": [],
+  "role": "user",
+  "cart": [],
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "65a4df149bdc204640805ac2"
+  },
+  "email": "rida@gmail.com",
+  "firstname": "Rida",
+  "lastname": "Roohi",
+  "mobile": "035687909568"
+},
+{
+  "_id": {
+    "$oid": "65a4f591fbcd2e2b5fe3ef8a"
+  },
+  "firstname": "Kashmala",
+  "lastname": "Yousafzai",
+  "email": "kashmala@gmail.com",
+  "mobile": "53727392839",
+  "password": "$2b$10$v1T0lMS8KDSUb89NRoTXUud240.K2rc9.NTbccuvvkKIY6FoPI0h.",
+  "address": {
+    "street": "536",
+    "city": "Islamabad",
+    "state": "Pakistan",
+    "country": "Pakistan",
+    "postalCode": "639000"
+  },
+  "orders": [],
+  "role": "user",
+  "cart": [],
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "65a50da8c324914fd55068eb"
+  },
+  "firstname": "Sawera",
+  "lastname": "Fatima",
+  "email": "sawera234@gmail.com",
+  "mobile": "68739283020",
+  "password": "$2b$10$DPjzfcudJyLuMJS1147GHuhK/39jW3u1BLPJuChH4G9aHsbOO5lFC",
+  "address": {
+    "street": "5367",
+    "city": "Nowshera",
+    "state": "Paksitan",
+    "country": "Pakistan",
+    "postalCode": "38930"
+  },
+  "orders": [],
+  "role": "user",
+  "cart": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a518f737ea995343749384"
+  },
+  "firstname": "Abdullah",
+  "lastname": "Malik",
+  "email": "abdullah123@gmail.com",
+  "mobile": "6483793000",
+  "password": "$2b$10$421QJkBuXtBgx1XHpd.fceqXWRjzxgWRkK/46ikvjDOeRmF2V1ItO",
+  "address": {
+    "street": "677",
+    "city": "Nowshera",
+    "state": "pakistan",
+    "country": "pakistan",
+    "postalCode": "64389"
+  },
+  "orders": [],
+  "role": "user",
+  "cart": [],
+  "__v": 4
+}]

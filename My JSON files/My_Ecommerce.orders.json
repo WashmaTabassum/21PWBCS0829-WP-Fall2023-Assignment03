@@ -1,0 +1,130 @@
+[{
+  "_id": {
+    "$oid": "65a43c9a3cd3b209b01afa1f"
+  },
+  "user": {
+    "$oid": "65a3c4049f96c8d5970189da"
+  },
+  "products": [
+    {
+      "product": {
+        "$oid": "65a3913634692ac72d2461cf"
+      },
+      "quantity": 2,
+      "price": 461.98,
+      "_id": {
+        "$oid": "65a43c4c3cd3b209b01afa17"
+      }
+    }
+  ],
+  "totalPrice": 461.98,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2024-01-14T19:57:14.603Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a43d533cd3b209b01afa2e"
+  },
+  "user": {
+    "$oid": "65a3c4049f96c8d5970189da"
+  },
+  "products": [
+    {
+      "product": {
+        "$oid": "65a3961d34692ac72d2461d8"
+      },
+      "quantity": 1,
+      "price": 78.99,
+      "_id": {
+        "$oid": "65a43d123cd3b209b01afa26"
+      }
+    }
+  ],
+  "totalPrice": 78.99,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2024-01-14T20:00:19.686Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a43e183cd3b209b01afa3e"
+  },
+  "user": {
+    "$oid": "65a23c1e693ebc9c30f17479"
+  },
+  "products": [
+    {
+      "product": {
+        "$oid": "65a3921434692ac72d2461d4"
+      },
+      "quantity": 1,
+      "price": 190.99,
+      "_id": {
+        "$oid": "65a43df73cd3b209b01afa36"
+      }
+    }
+  ],
+  "totalPrice": 190.99,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2024-01-14T20:03:36.945Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a50a124fbef90ce802ff47"
+  },
+  "user": {
+    "$oid": "65a23c1e693ebc9c30f17479"
+  },
+  "products": [
+    {
+      "product": {
+        "$oid": "65a3965534692ac72d2461da"
+      },
+      "quantity": 2,
+      "price": 157.98,
+      "_id": {
+        "$oid": "65a5099c4fbef90ce802ff42"
+      }
+    }
+  ],
+  "totalPrice": 157.98,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2024-01-15T10:33:54.660Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a51a6e37ea995343749394"
+  },
+  "user": {
+    "$oid": "65a518f737ea995343749384"
+  },
+  "products": [
+    {
+      "product": {
+        "$oid": "65a3913634692ac72d2461cf"
+      },
+      "quantity": 1,
+      "price": 230.99,
+      "_id": {
+        "$oid": "65a5198e37ea99534374938b"
+      }
+    }
+  ],
+  "totalPrice": 230.99,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2024-01-15T11:43:42.778Z"
+  },
+  "__v": 0
+}]

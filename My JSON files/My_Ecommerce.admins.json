@@ -1,0 +1,120 @@
+[{
+  "_id": {
+    "$oid": "65a24430a7f1db479f2ffb59"
+  },
+  "username": "aiman2344@gmail.com",
+  "password": "$2b$10$rP8ZYH.ci2O8wWtabs2PTesDVwfAe4hhR8SCsJd0oZt3JR1GqPqcm",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-13T08:05:04.189Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a24463a7f1db479f2ffb5c"
+  },
+  "username": "washma2906@gmail.com",
+  "password": "$2b$10$LuCdZMNhaWzeu/blagCR.eX.sMVBa1h2.rE1QqYwJvAosHSQAB12e",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-13T08:05:55.242Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a24475a7f1db479f2ffb5f"
+  },
+  "username": "ayesha456@gmail.com",
+  "password": "$2b$10$3CJp51VIIZQHsP8oufdJHO1Hrw3pxodSdzsD6DwvhqU89ZVOaB48q",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-13T08:06:13.518Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a24486a7f1db479f2ffb62"
+  },
+  "username": "muhsin4567@gmail.com",
+  "password": "$2b$10$5I2UHXr/l9s7i8WmdtQ9Dea45tLHPNBmzyq/vl1njY6gblqa7uvTa",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-13T08:06:30.755Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a244a3a7f1db479f2ffb65"
+  },
+  "username": "shahwaiz655@gmail.com",
+  "password": "$2b$10$r8VDfXP7iJOxm5hpjvEVyukvgoe1gOdX8rfMW6izqJhTFhx/jv1ZO",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-13T08:06:59.637Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a43e6a3cd3b209b01afa45"
+  },
+  "username": "hadia456@gmail.com",
+  "password": "$2b$10$q1XTVsgoeCqW.RNHrZ3.COWnEVJt9HfgyGR81vMSAUhS9FESWKyS.",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-14T20:04:58.375Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a4f3cafbcd2e2b5fe3ef86"
+  },
+  "username": "ridaroohi@gmail.com",
+  "password": "$2b$10$y37/FAH/5IGfgLmaGw1Z3.kWugCmHX9v1R.QLLd/MrbXan8LFrMye",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-15T08:58:50.390Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a50c641be2646841ed30c7"
+  },
+  "username": "wafaali@gmail.com",
+  "password": "$2b$10$cuefHM17qElglSE08.zOaOhsMXH13BOeZtY/dd6nMRosadWRYbe7e",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-15T10:43:48.858Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a50cf6c324914fd55068e5"
+  },
+  "username": "sawera@gmail.com",
+  "password": "$2b$10$CvhGCFgSVhUtX/fRK1mAqOBPmOOXs9xQ1ggGQZrFh9C/bN5kVKp1q",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-15T10:46:14.081Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a514fc37ea995343749375"
+  },
+  "username": "Aishakhan123@gmail.com",
+  "password": "$2b$10$G3R4iq.jjkPGZ/.B62Az4.uX0D7t9DZPSVyKAlmmnDJnfy0GkbvOa",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-01-15T11:20:28.590Z"
+  },
+  "__v": 0
+}]

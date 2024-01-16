@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "65a3913634692ac72d2461cf"
+  },
+  "productId": "01",
+  "name": "Jacket",
+  "description": "White leather Jacket",
+  "price": 230.99,
+  "imageUrl": "/images/white-leather.JPG",
+  "createdAt": {
+    "$date": "2024-01-14T07:45:58.183Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a3921434692ac72d2461d4"
+  },
+  "productId": "02",
+  "name": "Jacket",
+  "description": "Red leather Jacket",
+  "price": 190.99,
+  "imageUrl": "/images/red-leather.JPG",
+  "createdAt": {
+    "$date": "2024-01-14T07:49:40.630Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a3961d34692ac72d2461d8"
+  },
+  "productId": "03",
+  "name": "Jacket",
+  "description": "SkyBlue leather Jacket",
+  "price": 78.99,
+  "imageUrl": "/images/skyblue.JPG",
+  "createdAt": {
+    "$date": "2024-01-14T08:06:53.657Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a3965534692ac72d2461da"
+  },
+  "productId": "04",
+  "name": "upper",
+  "description": "Gray upper",
+  "price": 78.99,
+  "imageUrl": "/images/gray.JPG",
+  "createdAt": {
+    "$date": "2024-01-14T08:07:49.956Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a3968934692ac72d2461dc"
+  },
+  "productId": "05",
+  "name": "Jacket",
+  "description": "Dark brown Jacket",
+  "price": 90.99,
+  "imageUrl": "/images/darkbrown.JPG",
+  "createdAt": {
+    "$date": "2024-01-14T08:08:41.305Z"
+  },
+  "__v": 0
+}]
